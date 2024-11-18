@@ -1,4 +1,4 @@
-# onerail-takehome
+# onerail-practical
 
 ## Description
 Using Typescript, we need to implement a couple different versions of a "Cache"; our cache really is just an enumerable or object that stores unique keys that contain a value. Ideally this value can be anything and implementing the cache object with a type that looks like <string, T> would be the best.
