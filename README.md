@@ -1,24 +1,36 @@
 # onerail-practical
 
 ## Description
-Using Typescript, we need to implement a couple different versions of a "Cache"; our cache really is just an enumerable or object that stores unique keys that contain a value. Ideally this value can be anything and implementing the cache object with a type that looks like <string, T> would be the best.
+
+Interview Question: Implement an In-Memory Cache with TTL and LRU Eviction
+Scenario: You are tasked with developing an in-memory caching system for a
+high-performance web application. The cache should store key-value pairs to
+reduce the latency of data retrieval operations. Given the constraints of
+limited memory and the need for efficient access, the cache must support
+the following features:
 
 ## Requirements
-We need a simple application to use our cache. ExpressJS or something similar would be probably best leveraged. This layer of the project doesn't need to conform to best practices or super efficient practices as its just a use case for our Cache Service.
-As mentioned, the cache object stored should allow for any type of data being stored in the cache with string key.
-We want to POC 2 types of Caches:
-- A LRU Cache (Least Recently Used): This cache should store 10 records and evict the least recently used (updated, created, or read constitutes usage) when a new object is created and the cache already has 10 records.
-- A TTL Cache (Time to Live): This cache should store any number of records but evict any that haven't been used (updated, created, or read) in the time defined by the app (Let's use 10000ms as an example).
-- Each Cache should expose a Create, GetById, Update, SearchByValue, and Delete function.
-- Create should overwrite existing records if they already exist, and Update should really just use the create logic to avoid duplication of code.
-- SearchByValue should return any records that have a partial match of the provided search value. in the case of strings, it should be case insensitive.
+
+============= Basic Operations =============
+
+1. Set: Store a key-value pair in the cache.
+2. Get: Retrieve the value associated with a given key.
+3. Delete: Remove a key-value pair from the cache.
+
+============= Time-To-Live (TTL) =============
+Each key-value pair can have an optional TTL (in seconds).
+Once the TTL expires, the key-value pair should be automatically removed
+from the cache.
+
+============= Least Recently Used (LRU) Eviction =============
+The cache has a fixed maximum capacity.
+When the cache reaches its maximum capacity, inserting a new key-value
+pair should evict the least recently used item to make space.
 
 ## Considerations
+
 The example should conform to best Typescript practices and strongly typed objects.
 
-## Stretch Goals
-If time allows (please don't spend more than an hour or two on this 🙂) consider adding the following:
-- Unit tests
-- Extra requirement- Data resiliency: leveraging the fs library, make the application capable of writing data to disk in the case of an application faliure.
-The app should look to this file store when starting to preload the cache.
-The app should write a disk copy of the cache at a set interval.
+## Completing the exercise
+
+When your code is complete, running npm run test should pass all of our tests.
